@@ -1,0 +1,47 @@
+scalar DateTime
+
+type Query {
+    hello(name: String): String!
+    customer(id: ID): Customer
+    product(id: ID): Product
+}
+
+type Customer {
+  id: ID!
+  name: String!
+  contactLanguage: String
+  orders: [Order]
+}
+
+type Order {
+  id: ID!
+  date: DateTime!
+  invoiceAmount: Float
+  invoiceDocument: Document
+  products: [Product]
+  services: [Service]
+  customer: Customer
+}
+
+type Product {
+  id: ID!
+  name: String!
+  document: Document
+  images: [ProductImage]
+  orders: [Order] #has type resolver. 
+}
+
+type Service {
+  id: ID! 
+  name: String!
+}
+
+type ProductImage {
+  product: Product
+  imageUrl: String
+}
+
+type Document {
+  documentType: String
+  documentUrl: String
+}
