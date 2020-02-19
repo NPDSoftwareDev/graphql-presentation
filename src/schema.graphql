@@ -1,7 +1,6 @@
 scalar DateTime
 
 type Query {
-    hello(name: String): String!
     customer(id: ID): Customer
     product(id: ID): Product
 }
@@ -28,7 +27,7 @@ type Product {
   name: String!
   document: Document
   images: [ProductImage]
-  orders: [Order] #has type resolver. 
+  orders: [Order]  
 }
 
 type Service {

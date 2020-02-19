@@ -18,6 +18,12 @@ const resolvers = {
   Order: {
     products: async (parentOrder, _, ctx) => {
       return data.products.filter(prd => parentOrder.products.includes( parseInt(prd.id) ))
+    },
+    services: async (parentOrder, _, ctx) => {
+      if(ctx.user !==  "vp"){
+        throw Error("You are not allowed to access information about services")
+      }
+      return []
     }
   },
   Product: {
