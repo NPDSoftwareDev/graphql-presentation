@@ -3,6 +3,7 @@ scalar DateTime
 type Query {
     customer(id: ID): Customer
     product(id: ID): Product
+    order(id: ID): Order
 }
 
 type Mutation {

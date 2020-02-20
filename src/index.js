@@ -9,6 +9,9 @@ const resolvers = {
     product: async (_, {id}, ctx) => {
       return data.products.find(p => p.id == id)
     },
+    order: async (_, {id}, ctx) => {
+      return data.orders.find(ord => ord.id == id)
+    }
   },
   Mutation: {
     createOrder: async(parent, args, ctx, info) => {
