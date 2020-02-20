@@ -62,7 +62,8 @@ function timeout(ms) {
 
 const server = new GraphQLServer({
   resolvers,
-  typeDefs: "./src/schema.graphql"
+  typeDefs: "./src/schema.graphql",
+  middlewares:[] // Use Middleware to control authentication or authorization or other cross cutting concerns such as logging
 })
 
 server.start({port: 4099},() => console.log("Server is running"))
