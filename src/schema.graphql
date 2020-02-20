@@ -5,6 +5,9 @@ type Query {
     product(id: ID): Product
 }
 
+type Mutation {
+  createOrder(date: DateTime!, productIds:[Int], serviceIds:[Int], customerId:Int): Order
+}
 type Customer {
   id: ID!
   name: String!

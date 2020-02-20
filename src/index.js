@@ -1,4 +1,4 @@
-const { GraphQLServer } = require('graphql-yoga');
+const { GraphQLServer } = require("graphql-yoga");
 const { data } = require("./data");
 
 const resolvers = {
@@ -9,6 +9,13 @@ const resolvers = {
     product: async (_, {id}, ctx) => {
       return data.products.find(p => p.id == id)
     },
+  },
+  Mutation: {
+    createOrder: async(parent, args, ctx, info) => {
+      // Fake returning a new order by just returning data.orders[0].
+      // In real world you'd create an order and return that.
+      return data.orders[0] 
+    }
   },
   Customer: {
     orders: async (parentCustomer, _, ctx) => {
@@ -24,6 +31,10 @@ const resolvers = {
         throw Error("You are not allowed to access information about services")
       }
       return []
+    },
+    customer: async(parentOrder, _, ctx) => {
+      console.log(parentOrder)
+      return data.customers.find(cust => cust.id == parentOrder.customerId )
     }
   },
   Product: {
