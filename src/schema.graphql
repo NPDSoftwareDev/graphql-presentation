@@ -9,6 +9,7 @@ type Query {
 type Mutation {
   createOrder(date: DateTime!, productIds:[Int], serviceIds:[Int], customerId:Int): Order
 }
+
 type Customer {
   id: ID!
   name: String!
@@ -48,3 +49,34 @@ type Document {
   documentType: String
   documentUrl: String
 }
+
+"""
+"""
+A Customer is a Entity that we sell products to. 
+
+Customers are awesome because they pay us money
+"""
+type Customer {
+  """
+  ID is generate by the database
+  """
+  id: ID!
+
+  """
+  Customer Name is pulled from CRM
+  """
+  name: String!
+
+  """
+  Contact Language is the main language that customer 
+  speaks. However, most customers also accept communication 
+  in English.
+  """
+  contactLanguage: String
+
+  """
+  A List of orders belonging to a customer. 
+  """
+  orders: [Order]
+}
+"""
